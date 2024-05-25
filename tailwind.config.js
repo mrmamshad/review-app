@@ -1,4 +1,3 @@
-import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
 
 /** @type {import('tailwindcss').Config} */
@@ -12,11 +11,38 @@ export default {
     darkMode: "class",
     theme: {
         extend: {
+            colors: {
+                whitesmoke: "#f5f5f5",
+                "custom-gray": "#808080",
+            },
             fontFamily: {
-                sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+                sans: ["Roboto", "sans-serif"],
             },
         },
     },
 
-    plugins: [forms, require("daisyui")],
+    plugins: [
+        forms,
+        require("daisyui"),
+        function ({ addUtilities }) {
+            addUtilities(
+                {
+                    ".gradient-text": {
+                        background:
+                            "linear-gradient(to right, gray, whitesmoke)",
+                        "-webkit-background-clip": "text",
+                        "-webkit-text-fill-color": "transparent",
+                    },
+                    ".dark\\:gradient-text": {
+                        background:
+                            "linear-gradient(to right, #f5f5f5, #808080)",
+                        "-webkit-background-clip": "text",
+                        "-webkit-text-fill-color": "transparent",
+                    },
+                },
+                ["responsive", "hover", "dark"]
+            );
+        },
+    ],
 };
+

@@ -1,4 +1,3 @@
-// Authenticated.js
 import { useState } from "react";
 import ApplicationLogo from "@/Components/ApplicationLogo";
 import Dropdown from "@/Components/Dropdown";
@@ -25,6 +24,12 @@ export default function AuthenticatedLayout({ user, header, children }) {
 
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink
+                                    href={route("catagorie.index")}
+                                    active={route().current("catagorie.index")}
+                                >
+                                    Catagory
+                                </NavLink>
+                                <NavLink
                                     href={route("dashboard")}
                                     active={route().current("dashboard")}
                                 >
@@ -34,7 +39,7 @@ export default function AuthenticatedLayout({ user, header, children }) {
                         </div>
 
                         <div className="hidden sm:flex sm:items-center sm:ms-6">
-                            <ThemeSwitcher /> {/* Add ThemeSwitcher here */}
+                            <ThemeSwitcher />
                             <div className="ms-3 relative">
                                 <Dropdown>
                                     <Dropdown.Trigger>
@@ -79,7 +84,8 @@ export default function AuthenticatedLayout({ user, header, children }) {
                             </div>
                         </div>
 
-                        <div className="-me-2 flex items-center sm:hidden">
+                        <div className="flex items-center sm:hidden">
+                            <ThemeSwitcher />
                             <button
                                 onClick={() =>
                                     setShowingNavigationDropdown(
@@ -134,6 +140,12 @@ export default function AuthenticatedLayout({ user, header, children }) {
                             active={route().current("dashboard")}
                         >
                             Dashboard
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            href={route("catagorie.index")}
+                            active={route().current("catagorie.index")}
+                        >
+                            Catagory
                         </ResponsiveNavLink>
                     </div>
 

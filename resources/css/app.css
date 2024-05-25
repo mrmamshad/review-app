@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import "~google-fonts/css/roboto.css";
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.hide-scrollbar {
+    -ms-overflow-style: none;
+
+    scrollbar-width: none;
+
+    overflow-y: scroll;
+}
+.gradient-text {
+    background: linear-gradient(to right, rgb(145, 141, 141), rgb(109, 106, 106));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hover-item:hover {
+    transform: scale(1.05);
+}
