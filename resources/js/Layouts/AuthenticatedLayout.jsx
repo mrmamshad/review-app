@@ -24,8 +24,8 @@ export default function AuthenticatedLayout({ user, header, children }) {
 
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink
-                                    href={route("catagorie.index")}
-                                    active={route().current("catagorie.index")}
+                                    href={route("catagory.index")}
+                                    active={route().current("catagory.index")}
                                 >
                                     Catagory
                                 </NavLink>
@@ -142,8 +142,8 @@ export default function AuthenticatedLayout({ user, header, children }) {
                             Dashboard
                         </ResponsiveNavLink>
                         <ResponsiveNavLink
-                            href={route("catagorie.index")}
-                            active={route().current("catagorie.index")}
+                            href={route("catagory.index")}
+                            active={route().current("catagory.index")}
                         >
                             Catagory
                         </ResponsiveNavLink>

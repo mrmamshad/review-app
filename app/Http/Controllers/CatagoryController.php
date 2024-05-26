@@ -2,23 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
 use App\Models\Catagories;
 use App\Http\Requests\StorecatagoriesRequest;
 use App\Http\Requests\UpdatecatagoriesRequest;
 
-class CatagorieController extends Controller
+class CatagoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
+
+
     public function index()
     {
-        return inertia('Catagories/Index');
+        $catagories = Catagories::all();
+        // dd($catagories);
+        return Inertia::render('Show', ['catagories' => $catagories]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //

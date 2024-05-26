@@ -51,6 +51,7 @@ const SearchComponent = () => {
                 {results.map((result) => (
                     <li key={result.id}>{result.name}</li>
                 ))}
+                {console.log(results)}
             </ul>
         </div>
     );

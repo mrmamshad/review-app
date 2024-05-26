@@ -20,6 +20,7 @@ class CatagoriesFactory extends Factory
         return [
            "title" => fake()->title(),
             "imagepath" => fake()->imageUrl(),
+            'description' => fake()->realText(50, 2), // Generate a random text(),
             'created_at' => now(),
             'updated_at' => now(),
         ];

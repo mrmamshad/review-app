@@ -6,19 +6,18 @@ import TopicList from "@/catagories-items/TopicList";
 import React from 'react';
 
 export default function Show({ auth, catagories }) {
-
     return (
         <AuthenticatedLayout
             user={auth.user}
             header={
                 <div>
                     <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                        Dashboard
+                        Categories
                     </h2>
                 </div>
             }
         >
-            <Head title="Dashboard" />
+            <Head title="Categories" />
 
             <div className="py-12">
                 <section className="h-80">

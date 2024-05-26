@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\CatagorieController;
+use App\Http\Controllers\CatagoryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -27,7 +27,7 @@ Route::get('/', function ()
 
 Route::middleware(['auth', 'verified'])->group(function ()
 {
-    Route::resource("catagorie", CatagorieController::class);
+    Route::resource("/catagory", CatagoryController::class);
     Route::get('/topics/{topicName}', function ($topicName)
     {
         return inertia('TopicShow', ['topicName' => $topicName]);
