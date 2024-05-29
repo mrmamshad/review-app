@@ -1,53 +1,48 @@
 <?php
 
-use App\Http\Controllers\CatagoryController;
+namespace App\Http\Controllers;
+use App\Http\Controllers\CombinedController;
+use App\Http\Controllers\ItemsController;
+use App\Http\Controllers\CatagoryController; // Corrected from CatagoryController
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SearchController; // Added this import
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
-
-Route::get('/', function ()
-{
-    if (Auth::check())
-    {
+Route::get('/', function () {
+    if (Auth::check()) {
         return Inertia::render('Welcome', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
             'laravelVersion' => Application::VERSION,
             'phpVersion' => PHP_VERSION,
         ]);
-    }
-    else
-    {
+    } else {
         return redirect()->route('register');
     }
 });
 
-Route::middleware(['auth', 'verified'])->group(function ()
-{
-    Route::resource("/catagory", CatagoryController::class);
-    Route::get('/topics/{topicName}', function ($topicName)
-    {
-        return inertia('TopicShow', ['topicName' => $topicName]);
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::resource("/catagory", CatagoryController::class); // Corrected from catagory
+
+
+    Route::get('/topics/{topicName}', function ($topicName) {
+        return Inertia::render('TopicShow', ['topicName' => $topicName]);
     })->name('topic.show');
+
+    Route::get('/', [CombinedController::class, 'showSearch']);
 });
 
-
-
-
-Route::get('/dashboard', function ()
-{
+Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function ()
-{
+Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__ . '/auth.php';
-

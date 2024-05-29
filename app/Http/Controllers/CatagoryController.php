@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
+use Illuminate\Http\Request;
 use App\Models\Catagories;
 use App\Http\Requests\StorecatagoriesRequest;
 use App\Http\Requests\UpdatecatagoriesRequest;
@@ -13,10 +14,21 @@ class CatagoryController extends Controller
      * Display a listing of the resource.
      */
 
+     public function search(Request $request)
+     {
+         $query = $request->input('query');
+ 
+         // Simple search logic
+         $posts = Catagories::where('title', 'LIKE', "%$query%")
+                       ->orWhere('content', 'LIKE', "%$query%")
+                       ->get();
 
-
+         return Inertia::render('search', ['posts' => $posts]);
+     }
+     protected $fillable = ['name'];
     public function index()
     {
+
         $catagories = Catagories::all();
         // dd($catagories);
         return Inertia::render('Show', ['catagories' => $catagories]);
