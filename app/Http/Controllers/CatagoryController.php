@@ -10,21 +10,24 @@ use App\Http\Requests\UpdatecatagoriesRequest;
 
 class CatagoryController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
 
-     public function search(Request $request)
-     {
-         $query = $request->input('query');
- 
-         // Simple search logic
-         $posts = Catagories::where('title', 'LIKE', "%$query%")
-                       ->orWhere('content', 'LIKE', "%$query%")
-                       ->get();
+     public function show($id)
+    {
+        $Catagories = Catagories::with(['items' => function ($query) {
+            $query->limit(10); // Adjust the limit as needed
+        }])->findOrFail($id);
 
-         return Inertia::render('search', ['posts' => $posts]);
-     }
+        return Inertia::render('TopicShow', [
+            'Catagories' => $Catagories,
+            'items' => $Catagories->items,
+        ]);
+    }
+
+
      protected $fillable = ['name'];
     public function index()
     {
@@ -50,10 +53,6 @@ class CatagoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Catagories $catagories)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.

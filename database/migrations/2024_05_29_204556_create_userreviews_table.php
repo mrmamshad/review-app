@@ -11,22 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('items', function (Blueprint $table) {
+        Schema::create('userreviews', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->foreignId('catagories_id')->constrained()->onDelete('cascade');
-            $table->string('description');
-            $table->string('imagepath');
-            $table->integer('rating');
             $table->timestamps();
         });
     }
 
-    /**~
+    /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('items');
+        Schema::dropIfExists('userreviews');
     }
 };

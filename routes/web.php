@@ -24,13 +24,20 @@ Route::get('/', function () {
     }
 });
 
+
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::resource("/catagory", CatagoryController::class); // Corrected from catagory
+    Route::resource("/catagory", CatagoryController::class);
 
 
-    Route::get('/topics/{topicName}', function ($topicName) {
-        return Inertia::render('TopicShow', ['topicName' => $topicName]);
+    Route::get('/topics/{topicId}/{topicName}', function ($topicId, $topicName) {
+        return Inertia::render('TopicShow', [
+            'topicId' => $topicId,
+            'topicName' => $topicName
+        ]);
     })->name('topic.show');
+
+    Route::get('/topics/{topicId}/{topicName}', [ItemsController::class, 'index']);
+    Route::get('/items/{itemid}/{topicTitle}', [ItemsController::class, 'show']);
 
     Route::get('/', [CombinedController::class, 'showSearch']);
 });

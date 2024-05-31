@@ -6,9 +6,10 @@ import { MdArrowForward } from "react-icons/md";
 
 const Search = ({ categories, items }) => {
     const [input, setInput] = useState(false);
-    const [data, setData] = useState(categories, items);
+    const [data, setData] = useState([...categories, ...items]);
     const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);
+    console.log(data);
     // data.map((item) => console.log(item.title));
 
 
@@ -25,6 +26,7 @@ const Search = ({ categories, items }) => {
         const filteredData = data.filter(data =>
             data.title.toLowerCase().includes(query.toLowerCase())
         );
+        console.log(filteredData)
         setInput(true)
         setResults(filteredData.length > 0 ? filteredData : ['Not found']);
     };
@@ -37,7 +39,7 @@ const Search = ({ categories, items }) => {
                                 <input
                                     className="w-full p-2 pl-10 border border-gray-500 rounded-xl focus:ring-0 bg-white dark:bg-gray-800"
                                     type="text"
-                                    placeholder="Search categories"
+                                    placeholder="Search categories and items "
                                     value={query}
                                     onChange={(e) =>{
 
@@ -58,7 +60,9 @@ const Search = ({ categories, items }) => {
                                         d="M21 21l-6-6m2-4a7 7 0 11-14 0 7 7 0 0114 0z"
                                     />
                                 </svg>
-                            <button type="submit" className='absolute right-0  top-3 px-3  '><MdArrowForward /></button>
+                            {query.length > 0 && (
+                                <button type="submit" className='absolute right-0  top-3 px-3  '><MdArrowForward /></button>
+                            )}
                             </div>
                         </div>
             </form>

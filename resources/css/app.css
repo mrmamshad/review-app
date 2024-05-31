@@ -16,11 +16,45 @@
     overflow-y: scroll;
 }
 .gradient-text {
-    background: linear-gradient(to right, rgb(145, 141, 141), rgb(109, 106, 106));
-    -webkit-background-clip: text;
+    color: linear-gradient(to right, rgb(145, 141, 141), rgb(206, 193, 193));
     -webkit-text-fill-color: transparent;
 }
 
 .hover-item:hover {
     transform: scale(1.05);
+}
+
+
+.hoverBorderShadow {
+    padding: 1rem;
+
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+    transition: box-shadow 0.4s ease-in-out;
+  }
+
+  .hoverBorderShadow:hover {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* shadow-lg */
+  }
+
+html {
+    transition: background-color 0.9s ease-in, color 0.9s ease;
+}
+
+
+html.dark {
+    background-color: #333;
+    color: #f4f4f4;
+}
+
+
+button {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark .text-gray-800 {
+    color: #f4f4f4;
+}
+
+.dark .text-gray-200 {
+    color: #333;
 }

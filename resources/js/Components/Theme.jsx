@@ -1,16 +1,17 @@
 // ThemeSwitcher.js
 import React, { useEffect, useState } from "react";
-
+import "../../css/app.css";
 const ThemeSwitcher = () => {
     const [theme, setTheme] = useState(
         localStorage.getItem("theme") || "light"
     );
 
     useEffect(() => {
+        const root = document.documentElement;
         if (theme === "dark") {
-            document.documentElement.classList.add("dark");
+            root.classList.add("dark");
         } else {
-            document.documentElement.classList.remove("dark");
+            root.classList.remove("dark");
         }
         localStorage.setItem("theme", theme);
     }, [theme]);

@@ -11,20 +11,14 @@ use App\Http\Requests\UpdateitemsRequest;
 class ItemsController extends Controller
 {
 
-   public function search(Request $request)
-    {
-        $query = $request->input('query');
 
-        // Simple search logic
-        $posts = items::where('title', 'LIKE', "%$query%")
-                      ->orWhere('content', 'LIKE', "%$query%")
-                      ->get();
-
-        return Inertia::render('search', ['posts' => $posts]);
-    }
-    public function index()
+    public function index($topicId, $topicName)
     {
-        return Inertia::render('search');
+
+        $items = Items::where('catagories_id', $topicId)->get();
+        // dd($items);
+        // $filteredData = items::where('catagories_id', 1)->get();
+        return Inertia::render('TopicShow', ['items' => $items, 'topicName' => $topicName]);
     }
 
     /**
@@ -46,14 +40,15 @@ class ItemsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(items $items)
+    public function show($itemid  , $topicTitle )
     {
-        //
+        $item = Items::all();
+        $itemid = $itemid;
+        $topicTitle = $topicTitle;
+
+        return Inertia::render('ItemShow', ['itemid' => $itemid, 'topicTitle' => $topicTitle, 'item' => $item]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(items $items)
     {
         //

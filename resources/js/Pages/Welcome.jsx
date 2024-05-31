@@ -1,12 +1,11 @@
 import MenuComponent from "@/Components/Box"; // Verify path
-import ThemeSwitcher from "@/Components/Theme"; // Verify path
+
 import SearchComponent from "@/Pages/Search"; // Verify path
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout"; // Verify path
-import { Link, Head } from "@inertiajs/react"; // Ensure @inertiajs/react is installed
+import {  Head } from "@inertiajs/react";
 import "../../css/app.css"; // Verify path
 
 export default function Welcome({ auth , categories, items}) {
-
     return (
         <>
             <AuthenticatedLayout

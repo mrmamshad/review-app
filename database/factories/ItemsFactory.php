@@ -18,9 +18,10 @@ class ItemsFactory extends Factory
     {
         return [
             'catagories_id' => Catagories::factory(),
-            "title" => fake()->title(),
-            "imagepath" => fake()->imageUrl(),
-            'description' => fake()->realText(50, 2), // Generate a random text(),
+            'title' => $this->faker->sentence(mt_rand(2, 5)),
+            'imagepath' => $this->faker->imageUrl(),
+            'description' => $this->faker->realText(50, 2),
+            'rating' => $this->faker->numberBetween(1, 5),
             'created_at' => now(),
             'updated_at' => now(),
         ];
