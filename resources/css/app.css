@@ -58,3 +58,10 @@ button {
 .dark .text-gray-200 {
     color: #333;
 }
+input[type=radio]{
+    display: none;
+}
+.star{
+    cursor: pointer;
+    transition: color 0.2s;
+}

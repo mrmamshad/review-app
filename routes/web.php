@@ -39,7 +39,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/topics/{topicId}/{topicName}', [ItemsController::class, 'index']);
     Route::get('/items/{itemid}/{topicTitle}', [ItemsController::class, 'show']);
 
+
     Route::get('/', [CombinedController::class, 'showSearch']);
+    Route::post('/formData' , [FormDataController::class , 'store' ] );
+
 });
 
 Route::get('/dashboard', function () {

@@ -45,7 +45,7 @@ export default function TopicShow({ auth, topicName, items }) {
                         "{topicName}" Category items
                     </h1>
                 </div>
-                <div className="sm:flex container mx-10 gap-5">
+                <div className="grid  sm:flex container mx-auto sm:mx-10 gap-5">
                     <div className="bg-white dark:bg-gray-800 sm:h-80 h-60 rounded-md border border-gray-500 mb-10 w-full sm:w-2/5 overflow-hidden shadow-sm sm:rounded-lg">
                         <RatingSection onRatingChange={setRatingFilter} />
                     </div>

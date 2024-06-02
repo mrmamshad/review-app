@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Http\Requests\StoreitemsRequest;
 use App\Http\Requests\UpdateitemsRequest;
+use App\Models\formData;
 
 class ItemsController extends Controller
 {
@@ -42,11 +43,18 @@ class ItemsController extends Controller
      */
     public function show($itemid  , $topicTitle )
     {
+        $fromData = formData::all();
         $item = Items::all();
         $itemid = $itemid;
         $topicTitle = $topicTitle;
 
-        return Inertia::render('ItemShow', ['itemid' => $itemid, 'topicTitle' => $topicTitle, 'item' => $item]);
+        return Inertia::render('ItemShow',
+        [
+            'itemid' => $itemid,
+             'topicTitle' => $topicTitle,
+              'item' => $item,
+              ' ' => $fromData
+        ]);
     }
 
     public function edit(items $items)

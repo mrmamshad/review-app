@@ -1,5 +1,3 @@
-// resources/js/Pages/Show.jsx
-
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import TopicList from "@/catagories-items/TopicList";

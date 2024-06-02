@@ -1,5 +1,3 @@
-// resources/js/Pages/Search.jsx
-
 import React, { useState } from 'react';
 import { Inertia } from '@inertiajs/inertia';
 import { MdArrowForward } from "react-icons/md";
