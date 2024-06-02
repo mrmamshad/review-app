@@ -53,7 +53,7 @@ class ItemsController extends Controller
             'itemid' => $itemid,
              'topicTitle' => $topicTitle,
               'item' => $item,
-              ' ' => $fromData
+              'submitedReview' => $fromData
         ]);
     }
 
